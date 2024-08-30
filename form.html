@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .contact {
+            padding: 100px 50px;
+            background: #111;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .contact h1 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: #2a2a2a;
+            outline: none;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #00ff99, #00b3ff);
+            color: #000;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0px 10px 20px rgba(0, 255, 153, 0.4), 0px 6px 6px rgba(0, 179, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 30px rgba(0, 255, 153, 0.6), 0px 10px 10px rgba(0, 179, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="contact">
+        <h1>Let's Talk</h1>
+        <form class="contact-form" action="https://formspree.io/f/mrbzjoba" method="POST">
+            <input type="text" name="first" placeholder="First Name" autocomplete="off" required>
+            <input type="text" name="last" placeholder="Last Name" autocomplete="off" required>
+            <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
+            <textarea rows="5" cols="60" name="message" placeholder="Enter Text" autocomplete="off" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Coin Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Ubuntu", sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            background-color: #222;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        #coin {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        #button {
+            background: linear-gradient(90deg, #64ffda, #3edb9c);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        #button:hover {
+            background: linear-gradient(90deg, #3edb9c, #64ffda);
+            transform: translateY(-2px);
+        }
+
+        .animate-coin {
+            animation: flip 1.4s 1;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: scale3d(1, 1, 1) rotateX(0deg);
+            }
+            50% {
+                transform: scale3d(2, 2, 2) rotateX(3600deg);
+            }
+            100% {
+                transform: scale3d(1, 1, 1) rotateX(7200deg);
+            }
+        }
+
+        img {
+            max-width: 50%;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #result, #headsCounter, #tailsCounter {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #4a4a4a;
+        }
+
+        #headsCounter span, #tailsCounter span {
+            color: #3edb9c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <img id="featureCoin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Philippines_New_Generation_1_peso_coin_obverse.png/640px-Philippines_New_Generation_1_peso_coin_obverse.png" alt="Coin"/>
+        <div id='coin'></div>
+        <div id='button'>
+            Flip Coin
+        </div>
+        <div id='result'></div>
+        <div id='headsCounter'></div>
+        <div id='tailsCounter'></div>
+    </div>
+
+    <script>
+        var coin = document.getElementById('coin');
+        var button = document.getElementById('button');
+        var result = document.getElementById('result');
+        var headsCounter = document.getElementById('headsCounter');
+        var tailsCounter = document.getElementById('tailsCounter');
+        var heads = 0;
+        var tails = 0;
+
+        function coinToss() {
+            var x = Math.floor(Math.random() * 2); // Generate random number 0 or 1
+            if (x === 0) {
+                // If x is 0, it's heads
+                coin.innerHTML = '<img class="heads animate-coin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Philippines_New_Generation_1_peso_coin_obverse.png/640px-Philippines_New_Generation_1_peso_coin_obverse.png" alt="Heads"/>';
+                heads += 1; // Increment heads count
+                result.innerHTML = '<h2>You got heads!</h2>'; // Display result
+                headsCounter.innerHTML = '<h3>Number of heads: <span>' + heads + '</span></h3>'; // Display heads count
+            } else {
+                // If x is 1, it's tails
+                coin.innerHTML = '<img class="tails animate-coin" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Philippines_New_Generation_1_peso_coin_reverse.png/640px-Philippines_New_Generation_1_peso_coin_reverse.png" alt="Tails"/>';
+                tails += 1; // Increment tails count
+                result.innerHTML = '<h2>You got tails!</h2>'; // Display result
+                tailsCounter.innerHTML = '<h3>Number of tails: <span>' + tails + '</span></h3>'; // Display tails count
+            }
+        }
+
+        button.onclick = function() {
+            coinToss(); // Call coin toss function
+            featureCoin.remove(); // Remove the initial feature coin image
+        }
+    </script>
+</body>
+</html>
